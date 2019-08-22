@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kc.febs.visitor.dao.CardRecordMapper">
+    <resultMap id="BaseResultMap" type="com.kc.febs.visitor.domin.CreditCardRecord" >
+        <id column="recordid" property="recordId" jdbcType="BIGINT" />
+        <result column="id" property="id" jdbcType="BIGINT" />
+        <result column="cardNumber" property="cardNumber" jdbcType="VARCHAR" />
+        <result column="cardStatus" property="cardStatus" jdbcType="INTEGER" />
+        <result column="channelCode" property="channelCode" jdbcType="VARCHAR" />
+        <result column="channelName" property="channelName" jdbcType="VARCHAR" />
+        <result column="deptName" property="deptName" jdbcType="VARCHAR" />
+        <result column="deviceCode" property="deviceCode" jdbcType="VARCHAR" />
+        <result column="deviceName" property="deviceName" jdbcType="VARCHAR" />
+        <result column="enterOrExit" property="enterOrExit" jdbcType="INTEGER" />
+        <result column="openResult" property="openResult" jdbcType="INTEGER" />
+        <result column="openType" property="openType" jdbcType="INTEGER" />
+        <result column="paperNumber" property="paperNumber" jdbcType="VARCHAR" />
+        <result column="personCode" property="personCode" jdbcType="VARCHAR" />
+        <result column="personId" property="personId" jdbcType="BIGINT" />
+        <result column="personName" property="personName" jdbcType="VARCHAR" />
+        <result column="swingTime" property="swingTime" jdbcType="TIMESTAMP" />
+        <result column="recordImageName" property="recordImageName" jdbcType="VARCHAR" />
+    </resultMap>
+    <sql id="Base_Column_List" >
+    recordId, id, cardNumber, cardStatus, channelCode, channelName, deptName, deviceCode,
+    deviceName, enterOrExit, openResult, openType, paperNumber, personCode, personId,
+    personName, swingTime, recordImageName
+  </sql>
+    <insert id="saveCardRecord" parameterType="com.kc.febs.visitor.domin.CreditCardRecord" >
+        insert into v_record
+        <trim prefix="(" suffix=")" suffixOverrides="," >
+            <if test="recordId != null" >
+                recordid,
+            </if>
+            <if test="id != null" >
+                id,
+            </if>
+            <if test="cardNumber != null" >
+                cardNumber,
+            </if>
+            <if test="cardStatus != null" >
+                cardStatus,
+            </if>
+            <if test="channelCode != null" >
+                channelCode,
+            </if>
+            <if test="channelName != null" >
+                channelName,
+            </if>
+            <if test="deptName != null" >
+                deptName,
+            </if>
+            <if test="deviceCode != null" >
+                deviceCode,
+            </if>
+            <if test="deviceName != null" >
+                deviceName,
+            </if>
+            <if test="enterOrExit != null" >
+                enterOrExit,
+            </if>
+            <if test="openResult != null" >
+                openResult,
+            </if>
+            <if test="openType != null" >
+                openType,
+            </if>
+            <if test="paperNumber != null" >
+                paperNumber,
+            </if>
+            <if test="personCode != null" >
+                personCode,
+            </if>
+            <if test="personId != null" >
+                personId,
+            </if>
+            <if test="personName != null" >
+                personName,
+            </if>
+            <if test="swingTime != null" >
+                swingTime,
+            </if>
+            <if test="recordImageName != null" >
+                recordImageName,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides="," >
+            <if test="recordId != null" >
+                #{recordId,jdbcType=BIGINT},
+            </if>
+            <if test="id != null" >
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="cardNumber != null" >
+                #{cardNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="cardStatus != null" >
+                #{cardStatus,jdbcType=INTEGER},
+            </if>
+            <if test="channelCode != null" >
+                #{channelCode,jdbcType=VARCHAR},
+            </if>
+            <if test="channelName != null" >
+                #{channelName,jdbcType=VARCHAR},
+            </if>
+            <if test="deptName != null" >
+                #{deptName,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceCode != null" >
+                #{deviceCode,jdbcType=VARCHAR},
+            </if>
+            <if test="deviceName != null" >
+                #{deviceName,jdbcType=VARCHAR},
+            </if>
+            <if test="enterOrExit != null" >
+                #{enterOrExit,jdbcType=INTEGER},
+            </if>
+            <if test="openResult != null" >
+                #{openResult,jdbcType=INTEGER},
+            </if>
+            <if test="openType != null" >
+                #{openType,jdbcType=INTEGER},
+            </if>
+            <if test="paperNumber != null" >
+                #{paperNumber,jdbcType=VARCHAR},
+            </if>
+            <if test="personCode != null" >
+                #{personCode,jdbcType=VARCHAR},
+            </if>
+            <if test="personId != null" >
+                #{personId,jdbcType=BIGINT},
+            </if>
+            <if test="personName != null" >
+                #{personName,jdbcType=VARCHAR},
+            </if>
+            <if test="swingTime != null" >
+                #{swingTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="recordImageName != null" >
+                #{recordImageName,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+
+    <select id="queryCardRecord" parameterType="String" resultMap="BaseResultMap">
+        select <include refid="Base_Column_List"/>
+        from v_record
+        where 1=1
+        <if test='cardNumber != null and cardNumber != "" '>
+           and cardNumber = #{cardNumber}
+        </if>
+
+    </select>
+
+</mapper>
